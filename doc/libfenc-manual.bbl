@@ -1,0 +1,20 @@
+\providecommand{\ElG}{El Gamal}
+\begin{thebibliography}{LSW08}
+
+\bibitem[BF01]{bf01}
+Dan Boneh and Matthew~K. Franklin.
+\newblock Identity-based encryption from the {Weil} {P}airing.
+\newblock In {\em CRYPTO '01}, volume 2139 of LNCS, pages 213--229, 2001.
+
+\bibitem[LSW08]{lsw09}
+Allison Lewko, Amit Sahai, and Brent Waters.
+\newblock Revocation systems with very small private keys.
+\newblock Cryptology ePrint Archive, Report 2008/309, 2008.
+\newblock \url{http://eprint.iacr.org/2008/309}.
+
+\bibitem[Sha84]{shamir84}
+Adi Shamir.
+\newblock Identity-based cryptosystems and signature schemes.
+\newblock In {\em CRYPTO '84}, volume 196 of LNCS, pages 47--53, 1984.
+
+\end{thebibliography}

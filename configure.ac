@@ -126,8 +126,8 @@ if test "$ABI" = "32"; then
 	CXX="g++ -arch i386"
 elif test "$ABI" = "64"; then
 	echo "building for 64-bit architecture ONLY!"
-	CC="gcc -arch x86_64"
-	CXX="g++ -arch x86_64"
+	CC="gcc"
+	CXX="g++"
 else
 	echo "building for default system architecture"
 fi
@@ -135,34 +135,34 @@ fi
 # Checks for libraries.
 # AC_CHECK_LIB (library, function, [action-if-found], [action-if-not-found], [other-libraries])
 lib_err_msg="add its path to LDFLAGS\nsee ./configure --help"
-AC_CHECK_LIB( [m], [pow], [],[
-	      echo "************************"
-	      echo "m library not found"
-	      echo -e $lib_err_msg
-	      echo "************************"
-	      exit -1
-	      ])
-AC_CHECK_LIB( [gmp], [__gmpz_init], [],[
-	      echo "************************"
-	      echo "gmp library not found"
-	      echo -e $lib_err_msg
-	      echo "************************"
-	      exit -1
-	      ])
-AC_CHECK_LIB( [crypto], [DES_xcbc_encrypt], [],[
-              echo "************************"
-              echo "OpenSSL library not found"
-              echo -e $lib_err_msg
-              echo "************************"
-              exit -1
-              ])
-AC_CHECK_LIB( [pbc], [pbc_set_msg_to_stderr], [],[
-	      echo "************************"
-	      echo "pbc library not found"
-	      echo -e $lib_err_msg
-	      echo "************************"
-	      exit -1
-	      ])
+#AC_CHECK_LIB( [m], [pow], [],[
+#	      echo "************************"
+#	      echo "m library not found"
+#	      echo -e $lib_err_msg
+#	      echo "************************"
+#	      exit -1
+#	      ])
+#AC_CHECK_LIB( [gmp], [__gmpz_init], [],[
+#	      echo "************************"
+#	      echo "gmp library not found"
+#	      echo -e $lib_err_msg
+#	      echo "************************"
+#	      exit -1
+#	      ])
+#AC_CHECK_LIB( [crypto], [DES_xcbc_encrypt], [],[
+#              echo "************************"
+#              echo "OpenSSL library not found"
+#              echo -e $lib_err_msg
+#              echo "************************"
+#              exit -1
+#              ])
+#AC_CHECK_LIB( [pbc], [pbc_set_msg_to_stderr], [],[
+#	      echo "************************"
+#	      echo "pbc library not found"
+#	      echo -e $lib_err_msg
+#	      echo "************************"
+#	      exit -1
+#	      ])
 
 # Checks for header files.
 AC_FUNC_ALLOCA
@@ -181,7 +181,7 @@ AC_ARG_ENABLE( optimized,
          [with_enable_optimized="yes"],
 	 [with_enable_optimized="no"])
 
-CFLAGS="-Wall -W -Wfloat-equal -Wpointer-arith -Wcast-align -Wredundant-decls -Wendif-labels -Wshadow -pipe -ffast-math -U__STRICT_ANSI__"
+CFLAGS="-Wall -W -Wfloat-equal -lm -Wpointer-arith -Wcast-align -Wredundant-decls -Wendif-labels -Wshadow -pipe -ffast-math -U__STRICT_ANSI__"
 
 if test "$with_enable_optimized" = "no"; then
    	CFLAGS="$CFLAGS -g -O2 -DDEBUG"

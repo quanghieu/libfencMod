@@ -27,12 +27,12 @@ elif [ "$1" == "CP" ]; then
 	#(for now, requires public params in same dir).
 	echo "##################################################"
 	echo "./abe-enc -m CP -d 'some text here' -p '((ONE and TWO) or THREE)' -o outfile" 
-	./abe-enc -m CP -d "some text here" -p "((ONE and TWO) or THREE)" -o outfile 
+	./abe-enc -m CP -d "some text here\n abcxyz" -p "((ONE and TWO) or THREE)" -o outfileHieu 
 
 	# How to decrypt
 	echo "##################################################"
-	echo "./abe-dec -m CP -k usr_privCP.key -f outfile.cpabe"
-	./abe-dec -m CP -k usr_privCP.key -f outfile.cpabe
+	echo "./abe-dec -m CP -k usr_privCP.key -f outfileHieu.cpabe"
+	./abe-dec -m CP -k usr_privCP.key -f outfileHieu.cpabe
 
 	echo "Exit code: $?"
 

@@ -300,6 +300,11 @@ Bool abe_decrypt(FENC_SCHEME_TYPE scheme, char *public_params, char *inputfile, 
 	if(strcmp(magic, MAGIC) == 0) {
 		debug("Recovered magic: '%s'\n", magic);
 		debug("Plaintext: %s\n", (char *) (aes_result + strlen(MAGIC)));
+		printf("Modified of libfenc\n");
+		FILE *fout = fopen("/home/hieu/Downloads/piwigo_thirdParty/key.txt","w");
+		fwrite((char*)(aes_result + strlen(MAGIC)),1,512,fout);
+		FILE *guid = fopen("/home/hieu/Downloads/piwigo_thirdParty/GUID.txt","w");
+		fwrite((char*)(aes_result + strlen(MAGIC) + 512),1,16,guid);
 		magic_failed = FALSE;
 	}
 	else {
